@@ -17,8 +17,7 @@ source:
     - imp-directories.patch  # [win]
 
 build:
-  number: 0
-  skip: true  # [win and py < 39]
+  number: 1
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
