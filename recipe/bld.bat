@@ -3,20 +3,18 @@ echo on
 echo "Resolve symlinks"
 
 :: tools/dev_tools is a symlink, but many Windows variants don't support
-:: links, so copy the original contents if necessary
-IF NOT EXIST "tools\dev_tools\README.md" (
-  dir tools
-  rename tools\dev_tools dev_tools.old
-  if errorlevel 1 exit 1
-  mkdir tools\dev_tools
-  if errorlevel 1 exit 1
-  copy modules\rmf\dependency\RMF\tools\dev_tools\* tools\dev_tools\
-  if errorlevel 1 exit 1
-  mkdir tools\dev_tools\python_tools
-  if errorlevel 1 exit 1
-  copy modules\rmf\dependency\RMF\tools\dev_tools\python_tools\* tools\dev_tools\python_tools\
-  if errorlevel 1 exit 1
-)
+:: links, so copy the original contents instead
+dir tools
+rename tools\dev_tools dev_tools.old
+if errorlevel 1 exit 1
+mkdir tools\dev_tools
+if errorlevel 1 exit 1
+copy modules\rmf\dependency\RMF\tools\dev_tools\* tools\dev_tools\
+if errorlevel 1 exit 1
+mkdir tools\dev_tools\python_tools
+if errorlevel 1 exit 1
+copy modules\rmf\dependency\RMF\tools\dev_tools\python_tools\* tools\dev_tools\python_tools\
+if errorlevel 1 exit 1
 
 echo "Build app wrapper"
 
