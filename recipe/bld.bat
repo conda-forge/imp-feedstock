@@ -3,20 +3,18 @@ echo on
 echo "Resolve symlinks"
 
 :: tools/dev_tools is a symlink, but many Windows variants don't support
-:: links, so copy the original contents if necessary
-IF NOT EXIST "tools\dev_tools\README.md" (
-  dir tools
-  rename tools\dev_tools dev_tools.old
-  if errorlevel 1 exit 1
-  mkdir tools\dev_tools
-  if errorlevel 1 exit 1
-  copy modules\rmf\dependency\RMF\tools\dev_tools\* tools\dev_tools\
-  if errorlevel 1 exit 1
-  mkdir tools\dev_tools\python_tools
-  if errorlevel 1 exit 1
-  copy modules\rmf\dependency\RMF\tools\dev_tools\python_tools\* tools\dev_tools\python_tools\
-  if errorlevel 1 exit 1
-)
+:: links, so copy the original contents instead
+dir tools
+rename tools\dev_tools dev_tools.old
+if errorlevel 1 exit 1
+mkdir tools\dev_tools
+if errorlevel 1 exit 1
+copy modules\rmf\dependency\RMF\tools\dev_tools\* tools\dev_tools\
+if errorlevel 1 exit 1
+mkdir tools\dev_tools\python_tools
+if errorlevel 1 exit 1
+copy modules\rmf\dependency\RMF\tools\dev_tools\python_tools\* tools\dev_tools\python_tools\
+if errorlevel 1 exit 1
 
 echo "Build app wrapper"
 
@@ -65,7 +63,12 @@ if errorlevel 1 exit 1
 python "%RECIPE_DIR%\check_disabled_modules.py" %DISABLED%
 if errorlevel 1 exit 1
 
-ninja install
+:: Occasionally builds fail on Windows on conda-forge's build hosts
+:: due to the compiler running out of heap space. If this happens, try
+:: the build again; if it still fails, restrict to one core.
+ninja install -k 0
+if errorlevel 1 ninja install -k 0
+if errorlevel 1 ninja install -k 0 -j 1
 if errorlevel 1 exit 1
 
 :: Add wrappers to path for each Python command line tool
