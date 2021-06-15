@@ -17,11 +17,13 @@ source:
     - imp-directories.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
