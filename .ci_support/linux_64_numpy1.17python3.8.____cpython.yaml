@@ -27,7 +27,7 @@ hdf5:
 libcblas:
 - 3.8 *netlib
 libprotobuf:
-- '3.15'
+- '3.16'
 mpfr:
 - '4'
 mpich:
