@@ -19,7 +19,7 @@ libcblas:
 libopencv:
 - 4.5.3
 libprotobuf:
-- '3.16'
+- '3.18'
 mpfr:
 - '4'
 numpy:
