@@ -13,6 +13,7 @@ source:
     - cmake-w32-deps.patch
     - sfmap-swap.patch
     - anon-export-fix.patch
+    - protobuf36.patch
     - bc-clustering.patch  # [osx]
     - imp-directories.patch  # [win]
 
