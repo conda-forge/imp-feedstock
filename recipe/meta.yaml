@@ -1,4 +1,4 @@
-{% set version = "2.15.0" %}
+{% set version = "2.16.0" %}
 
 package:
   name: imp
@@ -7,18 +7,13 @@ package:
 source:
   fn: imp-{{ version }}.tar.gz
   url: https://github.com/salilab/imp/releases/download/{{ version }}/imp-src-{{ version }}.tar.gz
-  sha256: be2c13c95e4347f2fa4fe4f845a109464e9b95c6a417e286ba57aa79a7cd1a16
+  sha256: 8593a85c729f095fe2e9dd07673a9ad7a7afd4a230ed27ab5b8158809cf61889
   patches:
-    - clang-6-cpp14.patch
-    - cmake-w32-deps.patch
-    - sfmap-swap.patch
-    - anon-export-fix.patch
-    - protobuf36.patch
     - bc-clustering.patch  # [osx]
     - imp-directories.patch  # [win]
 
 build:
-  number: 10
+  number: 0
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
