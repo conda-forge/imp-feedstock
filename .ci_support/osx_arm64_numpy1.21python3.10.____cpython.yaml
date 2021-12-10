@@ -1,21 +1,19 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
 boost_cpp:
 - 1.74.0
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '9'
-cdt_name:
-- cos6
+- '11'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '9'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- '11'
 fftw:
 - '3'
 gmp:
@@ -25,17 +23,21 @@ gsl:
 hdf5:
 - 1.12.1
 libcblas:
-- 3.8 *netlib
+- 3.9 *netlib
 libopencv:
 - 4.5.3
 libprotobuf:
 - '3.18'
+llvm_openmp:
+- '11'
+macos_machine:
+- arm64-apple-darwin20.0.0
 mpfr:
 - '4'
 mpich:
 - '3'
 numpy:
-- '1.19'
+- '1.21'
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
@@ -49,9 +51,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.10.* *_cpython
 target_platform:
-- linux-64
+- osx-arm64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
