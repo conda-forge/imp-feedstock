@@ -5,7 +5,7 @@ boost_cpp:
 c_compiler:
 - clang
 c_compiler_version:
-- '11'
+- '12'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '11'
+- '12'
 fftw:
 - '3'
 gmp:
@@ -27,15 +27,15 @@ libcblas:
 libopencv:
 - 4.5.5
 libprotobuf:
-- '3.19'
+- '3.20'
 llvm_openmp:
-- '11'
+- '12'
 macos_machine:
 - arm64-apple-darwin20.0.0
 mpfr:
 - '4'
 mpich:
-- '3'
+- '4'
 numpy:
 - '1.21'
 pin_run_as_build:
