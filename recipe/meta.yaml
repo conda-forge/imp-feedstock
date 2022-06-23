@@ -1,4 +1,4 @@
-{% set version = "2.16.0" %}
+{% set version = "2.17.0" %}
 
 package:
   name: imp
@@ -7,13 +7,12 @@ package:
 source:
   fn: imp-{{ version }}.tar.gz
   url: https://github.com/salilab/imp/releases/download/{{ version }}/imp-src-{{ version }}.tar.gz
-  sha256: 8593a85c729f095fe2e9dd07673a9ad7a7afd4a230ed27ab5b8158809cf61889
+  sha256: 2667f7a4f7b4830ba27e0d41e2cab0fc21ca22176625bfd8b2f353b283dfc8af
   patches:
-    - bc-clustering.patch  # [osx]
     - imp-directories.patch  # [win]
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
