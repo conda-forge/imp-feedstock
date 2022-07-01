@@ -9,10 +9,11 @@ source:
   url: https://github.com/salilab/imp/releases/download/{{ version }}/imp-src-{{ version }}.tar.gz
   sha256: 2667f7a4f7b4830ba27e0d41e2cab0fc21ca22176625bfd8b2f353b283dfc8af
   patches:
+    - mac-python-two-level-namespace.patch
     - imp-directories.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:

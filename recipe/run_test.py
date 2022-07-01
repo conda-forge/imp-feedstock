@@ -37,6 +37,15 @@ del r
 
 os.unlink("test.rmf")
 
+# Make sure we can print objects without segfaulting (due to mismatch
+# between conda and OS-provided libc++.1.dylib;
+# see https://github.com/salilab/imp/issues/1062)
+m = IMP.Model()
+p = IMP.Particle(m)
+xyz = IMP.core.XYZ.setup_particle(p, IMP.algebra.Vector3D(1,2,3))
+h = IMP.atom.Hierarchy(p)
+strh = str(h)
+
 # Make sure that IMP.domino was built with HDF5 support
 x = IMP.domino.ReadHDF5AssignmentContainer
 
