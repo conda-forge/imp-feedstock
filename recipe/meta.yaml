@@ -11,6 +11,7 @@ source:
   patches:
     - mac-python-two-level-namespace.patch
     - imp-directories.patch  # [win]
+    - cgal-implicit-conversion.patch
 
 build:
   number: 2
