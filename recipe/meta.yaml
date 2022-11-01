@@ -12,6 +12,7 @@ source:
     - mac-python-two-level-namespace.patch
     - imp-directories.patch  # [win]
     - cgal-implicit-conversion.patch
+    - swig41.patch
 
 build:
   number: 5
