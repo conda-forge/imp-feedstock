@@ -12,9 +12,10 @@ source:
     - mac-python-two-level-namespace.patch
     - imp-directories.patch  # [win]
     - cgal-implicit-conversion.patch
+    - swig41.patch
 
 build:
-  number: 4
+  number: 5
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
