@@ -17,7 +17,7 @@ hdf5:
 libcblas:
 - 3.9 *netlib
 libopencv:
-- 4.6.0
+- 4.7.0
 libprotobuf:
 - '3.21'
 mpfr:
