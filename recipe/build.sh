@@ -9,12 +9,8 @@ export LANG=en_US.UTF-8
 # Don't build the scratch or cnmultifit modules
 DISABLED=scratch:cnmultifit
 
-# Avoid running out of memory on ARM by splitting up IMP.cgal
-if [ `uname -m` = "aarch64" ]; then
-  PERCPPCOMP="-DIMP_PER_CPP_COMPILATION=cgal"
-else
-  PERCPPCOMP=""
-fi
+# Avoid running out of memory on by splitting up IMP.cgal and IMP.spb
+PERCPPCOMP="-DIMP_PER_CPP_COMPILATION=cgal:spb"
 
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DIMP_DISABLED_MODULES=${DISABLED} \

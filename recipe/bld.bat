@@ -34,7 +34,8 @@ python "%RECIPE_DIR%\find_opencv_libs.py" "%PREFIX%"
 if errorlevel 1 exit 1
 
 :: Avoid running out of memory (particularly on 32-bit) by splitting up IMP.cgal
-set PERCPPCOMP="-DIMP_PER_CPP_COMPILATION=cgal"
+:: and IMP.spb
+set PERCPPCOMP="-DIMP_PER_CPP_COMPILATION=cgal:spb"
 
 :: Don't build the scratch or cnmultifit modules
 set DISABLED="scratch:cnmultifit"
