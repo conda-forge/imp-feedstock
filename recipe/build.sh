@@ -29,7 +29,7 @@ python "${RECIPE_DIR}/check_disabled_modules.py" ${DISABLED} || exit 1
 # On some platforms (notably aarch64 with Drone) builds can fail due to
 # running out of memory. If this happens, try the build again; if it
 # still fails, restrict to one core.
-ninja install -k 0 || ninja install -k 0 || ninja install -j 1
+ninja install -j 2 -k 0 || ninja install -j 2 -k 0 || ninja install -j 1
 
 # Don't distribute example application
 rm -f ${PREFIX}/bin/imp_example_app

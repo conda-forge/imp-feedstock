@@ -67,8 +67,8 @@ if errorlevel 1 exit 1
 :: Occasionally builds fail on Windows on conda-forge's build hosts
 :: due to the compiler running out of heap space. If this happens, try
 :: the build again; if it still fails, restrict to one core.
-ninja install -k 0
-if errorlevel 1 ninja install -k 0
+ninja install -j 2 -k 0
+if errorlevel 1 ninja install -j 2 -k 0
 if errorlevel 1 ninja install -k 0 -j 1
 if errorlevel 1 exit 1
 
