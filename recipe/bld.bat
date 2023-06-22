@@ -64,12 +64,9 @@ if errorlevel 1 exit 1
 python "%RECIPE_DIR%\check_disabled_modules.py" %DISABLED%
 if errorlevel 1 exit 1
 
-:: Occasionally builds fail on Windows on conda-forge's build hosts
-:: due to the compiler running out of heap space. If this happens, try
-:: the build again; if it still fails, restrict to one core.
-ninja install -j 2 -k 0
-if errorlevel 1 ninja install -j 2 -k 0
-if errorlevel 1 ninja install -k 0 -j 1
+:: Often builds fail on Windows on conda-forge's build hosts
+:: due to the compiler running out of heap space, so restrict to one core.
+ninja -j1
 if errorlevel 1 exit 1
 
 :: Add wrappers to path for each Python command line tool
