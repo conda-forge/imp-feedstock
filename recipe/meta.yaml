@@ -1,4 +1,4 @@
-{% set version = "2.18.0" %}
+{% set version = "2.19.0" %}
 
 package:
   name: imp
@@ -7,12 +7,12 @@ package:
 source:
   fn: imp-{{ version }}.tar.gz
   url: https://github.com/salilab/imp/releases/download/{{ version }}/imp-src-{{ version }}.tar.gz
-  sha256: 48ca1f1451bfe8c237a02cd58892b3aaaf6b0f15d9ac65f8048781a901f42ff5
+  sha256: 75529285e6d94ffe5b4246097d70e223d984947193226b39313c1a85bc011ddd
   patches:
     - imp-directories.patch  # [win]
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
@@ -42,6 +42,7 @@ requirements:
     # We only need the library; we don't use the OpenCV Python wrappers
     - libopencv
     - eigen
+    - cereal
     - fftw
     - gsl
     - libcblas
