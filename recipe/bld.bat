@@ -65,7 +65,7 @@ if errorlevel 1 exit 1
 
 :: Often builds fail on Windows on conda-forge's build hosts
 :: due to the compiler running out of heap space, so restrict to one core.
-ninja -j1
+ninja install -j1
 if errorlevel 1 exit 1
 
 :: Add wrappers to path for each Python command line tool
