@@ -14,7 +14,7 @@ PERCPPCOMP="-DIMP_PER_CPP_COMPILATION=cgal:spb"
 
 # Force C++17 compilation to build successfully with newer protobuf
 if [ `uname -s` = "Darwin" ]; then
-  CMAKE_ARGS="-DCMAKE_CXX_FLAGS=-std=c++17"
+  EXTRA_CXX_FLAGS=" -std=c++17"
 fi
 
 mkdir build && cd build
@@ -23,6 +23,7 @@ cmake -DCMAKE_BUILD_TYPE=Release -DIMP_DISABLED_MODULES=${DISABLED} \
       -DIMP_USE_SYSTEM_RMF=on \
       -DIMP_USE_SYSTEM_IHM=on \
       ${CMAKE_ARGS} ${PERCPPCOMP} \
+      -DCMAKE_CXX_FLAGS="-D_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY${EXTRA_CXX_FLAGS}" \
       -DUSE_PYTHON2=off \
       -DPython3_FIND_FRAMEWORK=NEVER \
       ..
