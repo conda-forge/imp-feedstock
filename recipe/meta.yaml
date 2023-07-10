@@ -10,6 +10,7 @@ source:
   sha256: 75529285e6d94ffe5b4246097d70e223d984947193226b39313c1a85bc011ddd
   patches:
     - imp-directories.patch  # [win]
+    - imp-abseil-windows.patch  # [win]
 
 build:
   number: 2
