@@ -12,6 +12,11 @@ DISABLED=scratch:cnmultifit
 # Avoid running out of memory on by splitting up IMP.cgal and IMP.spb
 PERCPPCOMP="-DIMP_PER_CPP_COMPILATION=cgal:spb"
 
+# Force C++17 compilation to build successfully with newer protobuf
+if [ `uname -s` = "Darwin" ]; then
+  CMAKE_ARGS="-DCMAKE_CXX_FLAGS=-std=c++17"
+fi
+
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DIMP_DISABLED_MODULES=${DISABLED} \
       -G Ninja \
