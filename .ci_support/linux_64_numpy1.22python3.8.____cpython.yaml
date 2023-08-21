@@ -27,15 +27,15 @@ hdf5:
 libcblas:
 - 3.9 *netlib
 libopencv:
-- 4.7.0
+- 4.8.0
 libprotobuf:
-- '3.21'
+- 4.23.3
 mpfr:
 - '4'
 mpich:
 - '4'
 numpy:
-- '1.21'
+- '1.22'
 pin_run_as_build:
   boost-cpp:
     max_pin: x.x.x
