@@ -13,7 +13,7 @@ source:
     - imp-abseil-windows.patch  # [win]
 
 build:
-  number: 6
+  number: 7
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
@@ -36,7 +36,7 @@ requirements:
     - numpy
     - rmf
     - ihm
-    - boost-cpp
+    - libboost-devel
     - hdf5
     # We need both the libprotobuf library and the Python wrappers
     - libprotobuf
@@ -62,7 +62,6 @@ requirements:
     # RMF does not pin its exports, but we link against the C++ DSO
     - {{ pin_compatible('rmf', max_pin='x.x') }}
     - ihm
-    - boost-cpp
     - protobuf
     - msmpi  # [win]
 
