@@ -21,7 +21,7 @@ gmp:
 gsl:
 - '2.7'
 hdf5:
-- 1.14.2
+- 1.14.3
 libboost_devel:
 - '1.82'
 libcblas:

@@ -35,10 +35,7 @@ python "${RECIPE_DIR}/check_disabled_modules.py" ${DISABLED} || exit 1
 if [ `uname -s` = "Darwin" ]; then
   ninja install
 else
-  # On some Linux platforms (notably aarch64 with Drone) builds can fail due to
-  # running out of memory. If this happens, try the build again; if it
-  # still fails, restrict to one core.
-  ninja install -j 2 -k 0 || ninja install -j 2 -k 0 || ninja install -j 1
+  ninja install -j 1
 fi
 
 # Don't distribute example application
