@@ -11,6 +11,7 @@ source:
   patches:
     - imp-directories.patch  # [win]
     - imp-abseil-windows.patch  # [win]
+    - imp-swig42.patch
 
 build:
   number: 1

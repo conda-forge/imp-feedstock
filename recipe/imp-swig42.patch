@@ -1,0 +1,169 @@
+diff --git a/modules/algebra/pyext/swig.i-in b/modules/algebra/pyext/swig.i-in
+index 6fb55e1ec2..3e3ddd3064 100644
+--- a/modules/algebra/pyext/swig.i-in
++++ b/modules/algebra/pyext/swig.i-in
+@@ -235,21 +235,17 @@ IMP_SWIG_ALGEBRA_FUNCTION_DS_D(Vector, get_vertices, UnitSimplex);
+ IMP_SWIG_ALGEBRA_FUNCTION_D_DD(Vector, get_increasing_from_embedded, UnitSimplex, Vector);
+ IMP_SWIG_ALGEBRA_FUNCTION_D_DD(Vector, get_embedded_from_increasing, UnitSimplex, Vector);
+ 
+-namespace IMP {
+- namespace algebra {
+-   %template(_AxisAnglePair) ::std::pair<IMP::algebra::VectorD<3>,double>;
++%template(_AxisAnglePair) std::pair<IMP::algebra::VectorD<3>,double>;
+ 
+-   %template(get_transformation_aligning_first_to_second) get_transformation_aligning_first_to_second<IMP::Vector<IMP::algebra::VectorD<3> >, IMP::Vector<IMP::algebra::VectorD<3> > >;
+-   // rotation operations
++%template(get_transformation_aligning_first_to_second) IMP::algebra::get_transformation_aligning_first_to_second<IMP::Vector<IMP::algebra::VectorD<3> >, IMP::Vector<IMP::algebra::VectorD<3> > >;
+ 
+-   %template(_RotatedVector3DAdjoint) ::std::pair<IMP::algebra::VectorD<3>,IMP::algebra::VectorD<4> >;
+-   %template(_ComposeRotation3DAdjoint) ::std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<4> >;
++// rotation operations
++%template(_RotatedVector3DAdjoint) std::pair<IMP::algebra::VectorD<3>,IMP::algebra::VectorD<4> >;
++%template(_ComposeRotation3DAdjoint) std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<4> >;
+ 
+-   %template(_Transformation3DAdjoint) ::std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> >;
+-   %template(_TransformedVector3DAdjoint) ::std::pair<IMP::algebra::VectorD<3>,std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> > >;
+-   %template(_ComposeTransformation3DAdjoint) ::std::pair<std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> >,std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> > >;
+- }
+-}
++%template(_Transformation3DAdjoint) std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> >;
++%template(_TransformedVector3DAdjoint) std::pair<IMP::algebra::VectorD<3>,std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> > >;
++%template(_ComposeTransformation3DAdjoint) std::pair<std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> >,std::pair<IMP::algebra::VectorD<4>,IMP::algebra::VectorD<3> > >;
+ 
+ %inline %{
+ double get_rmsd_transforming_first(IMP::algebra::Transformation3D tr,
+diff --git a/modules/atom/pyext/swig.i-in b/modules/atom/pyext/swig.i-in
+index d8d02d220f..303605b6f9 100644
+--- a/modules/atom/pyext/swig.i-in
++++ b/modules/atom/pyext/swig.i-in
+@@ -247,24 +247,17 @@ IMP_SWIG_NESTED_SEQUENCE_TYPEMAP(IMP::atom::AtomType, IMP::atom::AtomTypes, IMP:
+ %template(_ALoopStatisticalBase) IMP::score_functor::DistancePairScore<IMP::score_functor::LoopStatistical>;
+ %template(_BLoopStatisticalBase) IMP::score_functor::DistancePairScore< IMP::score_functor::Statistical< IMP::atom::LoopStatisticalType,false,true,false > >;
+ %template(_OrientedSoapBase) IMP::score_functor::DistancePairScoreWithCache<IMP::score_functor::OrientedSoap>;
+-namespace IMP {
+-  namespace atom {
+-   %template(_SPSFTB) ::IMP::score_functor::DistancePairScore<score_functor::Statistical< IMP::atom::ProteinLigandType, true, false> >;
+-   %template(_SPSTF) ::IMP::core::StatisticalPairScore< IMP::atom::ProteinLigandType, true, false>;
+-   %template(_SPSFT) ::IMP::core::StatisticalPairScore< IMP::atom::DopeType, false, true>;
+-   %template(_SPSFTL) ::IMP::core::StatisticalPairScore< IMP::atom::LoopStatisticalType, false, true>;
+-  }
+-}
++%template(_SPSFTB) ::IMP::score_functor::DistancePairScore<score_functor::Statistical< IMP::atom::ProteinLigandType, true, false> >;
++%template(_SPSTF) ::IMP::core::StatisticalPairScore< IMP::atom::ProteinLigandType, true, false>;
++%template(_SPSFT) ::IMP::core::StatisticalPairScore< IMP::atom::DopeType, false, true>;
++%template(_SPSFTL) ::IMP::core::StatisticalPairScore< IMP::atom::LoopStatisticalType, false, true>;
+ %include "IMP/atom/protein_ligand_score.h"
+ 
+-namespace IMP {
+-  namespace atom {
+-   // swig has random, perplexing issues if these are higher in the file
+-   %template(AtomType) ::IMP::Key<IMP_ATOM_TYPE_INDEX>;
+-   %template(ResidueType) ::IMP::Key<IMP_RESIDUE_TYPE_INDEX>;
+-   %template(ChainType) ::IMP::Key<IMP_CHAIN_TYPE_INDEX>;
+-  }
+-}
++// swig has random, perplexing issues if these are higher in the file
++%template(AtomType) ::IMP::Key<IMP_ATOM_TYPE_INDEX>;
++%template(ResidueType) ::IMP::Key<IMP_RESIDUE_TYPE_INDEX>;
++%template(ChainType) ::IMP::Key<IMP_CHAIN_TYPE_INDEX>;
++
+ %include "IMP/atom/element.h"
+ %include "IMP/atom/Atom.h"
+ %include "IMP/atom/Residue.h"
+diff --git a/modules/core/pyext/swig.i-in b/modules/core/pyext/swig.i-in
+index 66c71046b5..406f480fc1 100644
+--- a/modules/core/pyext/swig.i-in
++++ b/modules/core/pyext/swig.i-in
+@@ -379,17 +379,12 @@ IMP::Restraint *create_restraint(IMP::PairScore *ps, IMP::ParticlePair pp) {
+ }
+ %}
+ 
+-namespace IMP {
+-  namespace core {
+-    %template(TruncatedHarmonicLowerBound) ::IMP::core::TruncatedHarmonic<LOWER>;
+-    %template(TruncatedHarmonicUpperBound) ::IMP::core::TruncatedHarmonic<UPPER>;
+-    %template(TruncatedHarmonicBound) ::IMP::core::TruncatedHarmonic<BOTH>;
+-    // swig screws up on scopes, I can't be bothered to fix it
+-    //%template(show_named_hierarchy) show<::IMP::core::Name>;
+-   %template(ParticleType) ::IMP::Key<IMP_PARTICLE_TYPE_INDEX>;
+-
+-  }
+-}
++%template(TruncatedHarmonicLowerBound) ::IMP::core::TruncatedHarmonic<IMP::core::LOWER>;
++%template(TruncatedHarmonicUpperBound) ::IMP::core::TruncatedHarmonic<IMP::core::UPPER>;
++%template(TruncatedHarmonicBound) ::IMP::core::TruncatedHarmonic<IMP::core::BOTH>;
++// swig screws up on scopes, I can't be bothered to fix it
++//%template(show_named_hierarchy) show<::IMP::core::Name>;
++%template(ParticleType) ::IMP::Key<IMP_PARTICLE_TYPE_INDEX>;
+ 
+ IMP_SWIG_GENERIC_OBJECT_TEMPLATE(IMP::core, AttributeSingletonScore, generic_attribute_singleton_score, UnaryFunction);
+ IMP_SWIG_GENERIC_OBJECT_TEMPLATE(IMP::core, BoundingBox3DSingletonScore, bounding_box_3d_singleton_score, UnaryFunction);
+diff --git a/modules/em2d/pyext/swig.i-in b/modules/em2d/pyext/swig.i-in
+index 56b9c0e61f..e961444064 100644
+--- a/modules/em2d/pyext/swig.i-in
++++ b/modules/em2d/pyext/swig.i-in
+@@ -99,22 +99,18 @@ IMP_SWIG_DECORATOR(IMP::em2d, ProjectionParameters, ProjectionParametersList);
+ 
+ // %include "IMP/em2d/TemplateFinder.h"
+ 
+-namespace IMP {
+-  namespace em2d {
+-    %template(ResultAlign2D)
+-            ::std::pair< IMP::algebra::Transformation2D,double >;
++%template(ResultAlign2D)
++        ::std::pair< IMP::algebra::Transformation2D,double >;
+ 
+ //    %template(VectorOfInts)   ::std::vector< IMP::Ints >;
+ //    %template(VectorOfFloats) ::std::vector< IMP::Floats >;
+ 
+-   %template(_do_hierarchical_clustering_single_linkage)
+-          ::IMP::em2d::do_hierarchical_agglomerative_clustering<SingleLinkage>;
+-   %template(_do_hierarchical_clustering_complete_linkage)
+-           ::IMP::em2d::do_hierarchical_agglomerative_clustering<CompleteLinkage>;
+-   %template(_do_hierarchical_clustering_average_distance_linkage)
+-           ::IMP::em2d::do_hierarchical_agglomerative_clustering<AverageDistanceLinkage>;
+-  }
+-}
++%template(_do_hierarchical_clustering_single_linkage)
++      ::IMP::em2d::do_hierarchical_agglomerative_clustering<IMP::em2d::SingleLinkage>;
++%template(_do_hierarchical_clustering_complete_linkage)
++       ::IMP::em2d::do_hierarchical_agglomerative_clustering<IMP::em2d::CompleteLinkage>;
++%template(_do_hierarchical_clustering_average_distance_linkage)
++       ::IMP::em2d::do_hierarchical_agglomerative_clustering<IMP::em2d::AverageDistanceLinkage>;
+ 
+ %pythoncode %{
+   do_hierarchical_clustering_single_linkage = _do_hierarchical_clustering_single_linkage
+diff --git a/modules/algebra/pyext/IMP_algebra.vector.i b/modules/algebra/pyext/IMP_algebra.vector.i
+index 5fa4702cfb..c0c94e4888 100644
+--- a/modules/algebra/pyext/IMP_algebra.vector.i
++++ b/modules/algebra/pyext/IMP_algebra.vector.i
+@@ -103,21 +103,21 @@ IMP_SWIG_ALGEBRA_VALUE_D(IMP::algebra,  Vector);
+ 
+ %extend IMP::algebra::VectorD<-1> {
+   double __getitem__(int index) const {
+-    int D = self->get_dimension();
+-    if (index >= 0 && index < D) {
++    int dim = self->get_dimension();
++    if (index >= 0 && index < dim) {
+       return self->operator[](index);
+-    } else if (index <= -1 && index >= -(D)) {
+-      return self->operator[](index + D);
++    } else if (index <= -1 && index >= -(dim)) {
++      return self->operator[](index + dim);
+     } else {
+       throw IMP::IndexException("VectorD index out of range");
+     }
+   }
+   void __setitem__(int index, double val) {
+-    int D = self->get_dimension();
+-    if (index >= 0 && index < D) {
++    int dim = self->get_dimension();
++    if (index >= 0 && index < dim) {
+       self->operator[](index) = val;
+-    } else if (index <= -1 && index >= -(D)) {
+-      self->operator[](index + D) = val;
++    } else if (index <= -1 && index >= -(dim)) {
++      self->operator[](index + dim) = val;
+     } else {
+       throw IMP::IndexException("VectorD assignment index out of range");
+     }
