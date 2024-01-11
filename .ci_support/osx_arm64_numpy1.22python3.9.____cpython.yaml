@@ -25,7 +25,7 @@ libboost_devel:
 libcblas:
 - 3.9 *netlib
 libopencv:
-- 4.8.1
+- 4.9.0
 libprotobuf:
 - 4.24.4
 llvm_openmp:
