@@ -11,9 +11,10 @@ source:
   patches:
     - imp-directories.patch  # [win]
     - imp-abseil-windows.patch  # [win]
+    - imp-nested-classes-swig.patch
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
