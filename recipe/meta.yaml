@@ -12,6 +12,7 @@ source:
     - imp-directories.patch  # [win]
     - imp-abseil-windows.patch  # [win]
     - imp-nested-classes-swig.patch
+    - imp-serialize-boost-unordered.patch
 
 build:
   number: 4

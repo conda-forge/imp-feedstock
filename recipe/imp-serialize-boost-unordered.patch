@@ -1,0 +1,31 @@
+commit b9b18196d9b31165191068e1e3db3950d6883b86
+Author: Ben Webb <ben@salilab.org>
+Date:   Wed Jan 31 12:07:21 2024 -0800
+
+    Force cereal for serializing boost::unordered_map
+    
+    As of Boost 1.84, Boost provides its own serialize
+    method for unordered_map (to work with Boost.Serialize).
+    This conflicts with cereal's own functions which we
+    previously relied upon. Force use of the cereal
+    functions to remove this ambiguity.
+
+diff --git a/modules/kernel/include/set_map_macros.h b/modules/kernel/include/set_map_macros.h
+index df95dc5d4b..66d6265075 100644
+--- a/modules/kernel/include/set_map_macros.h
++++ b/modules/kernel/include/set_map_macros.h
+@@ -54,6 +54,14 @@
+ #define IMP_KERNEL_LARGE_UNORDERED_SET boost::unordered_set
+ #define IMP_KERNEL_LARGE_UNORDERED_MAP boost::unordered_map
+ 
++// Use cereal's own functions to serialize unordered_map, not those
++// provided (for Boost.Serialize) in newer Boost versions
++namespace cereal {
++  template<class Archive, class Key, class T>
++    struct specialize<Archive, boost::unordered_map<Key, T>,
++                      cereal::specialization::non_member_load_save> {};
++}
++
+ #if defined(_MSC_VER) && _MSC_VER <= 1500
+ #include <set>                      // IWYU pragma: export
+ #include <map>                      // IWYU pragma: export
