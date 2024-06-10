@@ -13,7 +13,7 @@ source:
     - imp-abseil-windows.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
@@ -59,7 +59,6 @@ requirements:
 
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     # RMF does not pin its exports, but we link against the C++ DSO
     - {{ pin_compatible('rmf', max_pin='x.x') }}
     - ihm
