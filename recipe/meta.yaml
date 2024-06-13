@@ -1,4 +1,4 @@
-{% set version = "2.20.2" %}
+{% set version = "2.21.0" %}
 
 package:
   name: imp
@@ -7,13 +7,13 @@ package:
 source:
   fn: imp-{{ version }}.tar.gz
   url: https://github.com/salilab/imp/releases/download/{{ version }}/imp-src-{{ version }}.tar.gz
-  sha256: 056b48f25f8c3de81c4ce73ce82c7bb1d550dfc936d57e0aaea0157dad7326cb
+  sha256: c3dcafdd5f9d555a801d3daeff6a0c66293834a3d7240d35698f3c2b2fbc6f71
   patches:
     - imp-directories.patch  # [win]
     - imp-abseil-windows.patch  # [win]
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
