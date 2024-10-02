@@ -9,6 +9,7 @@ source:
   url: https://github.com/salilab/imp/releases/download/{{ version }}/imp-src-{{ version }}.tar.gz
   sha256: c3dcafdd5f9d555a801d3daeff6a0c66293834a3d7240d35698f3c2b2fbc6f71
   patches:
+    - imp-cgal6.patch
     - imp-directories.patch  # [win]
     - imp-abseil-windows.patch  # [win]
 
