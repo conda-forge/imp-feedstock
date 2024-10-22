@@ -53,7 +53,7 @@ requirements:
     - cgal-cpp
     # CGAL code pulls in mpfr and gmp (on Linux/Mac) or mpir (on Windows)
     - gmp   # [not win]
-    - mpir  # [win]
+    - gmp  # [win]
     - mpfr
     - mpich  # [not win]
     - msmpi  # [win]
