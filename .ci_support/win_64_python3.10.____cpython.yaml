@@ -1,5 +1,5 @@
 c_compiler:
-- vs2019
+- vs2022
 c_stdlib:
 - vs
 channel_sources:
@@ -7,7 +7,7 @@ channel_sources:
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2019
+- vs2022
 fftw:
 - '3'
 gsl:
@@ -19,21 +19,18 @@ libboost_devel:
 libcblas:
 - 3.9.* *netlib
 libopencv:
-- 4.11.0
+- 4.12.0
 libprotobuf:
 - 5.29.3
 mpfr:
 - '4'
 numpy:
-- '2.0'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.10.* *_cpython
 target_platform:
 - win-64
-zip_keys:
-- - python
-  - numpy
