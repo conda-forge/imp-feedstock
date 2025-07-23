@@ -1,0 +1,42 @@
+commit bcdd2a4964d4431af41cab2a395963c2e64752bc (HEAD -> refs/heads/develop, refs/remotes/origin/develop, refs/remotes/origin/HEAD)
+Author: Ben Webb <ben@salilab.org>
+Date:   Wed Jul 23 15:39:43 2025 -0700
+
+    Support string_view field descriptors
+    
+    protobuf v30 changes the type for descriptor
+    names from std::string to absl::string_view.
+    string_view has no implicit conversion to
+    std::string, so add an explicit one.
+
+diff --git a/modules/npctransport/src/protobuf.cpp b/modules/npctransport/src/protobuf.cpp
+index 7e8cbad..d162fa6 100644
+--- a/modules/npctransport/src/protobuf.cpp
++++ b/modules/npctransport/src/protobuf.cpp
+@@ -61,7 +61,8 @@ namespace {
+             show_ranges(oss.str(), &r->GetRepeatedMessage(*message, fd, i));
+           }
+         } else {
+-          show_ranges(fd->name(), &r->GetMessage(*message, fd));
++          show_ranges(static_cast<std::string>(fd->name()),
++                      &r->GetMessage(*message, fd));
+         }
+       }
+       }
+@@ -209,12 +210,14 @@ namespace {
+             int sz = in_r->FieldSize(*in_message, in_fd);
+             for (int i = 0; i < sz; ++i) {
+               ret +=
+-                get_ranges(in_fd->name(), &in_r->GetRepeatedMessage(*in_message, in_fd, i),
++                get_ranges(static_cast<std::string>(in_fd->name()),
++                           &in_r->GetRepeatedMessage(*in_message, in_fd, i),
+                            out_r->AddMessage(out_message, out_fd));
+               // IMP_LOG(VERBOSE, "Got " << IMP::Showable(ret) << std::endl);
+             }
+           } else { // not repeated:
+-            ret += get_ranges(in_fd->name(), &in_r->GetMessage(*in_message, in_fd),
++            ret += get_ranges(static_cast<std::string>(in_fd->name()),
++                              &in_r->GetMessage(*in_message, in_fd),
+                               out_r->MutableMessage(out_message, out_fd));
+             // IMP_LOG(VERBOSE, "Got " << IMP::Showable(ret) << std::endl);
+           }
