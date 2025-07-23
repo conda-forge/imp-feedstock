@@ -33,7 +33,7 @@ libcblas:
 libopencv:
 - 4.12.0
 libprotobuf:
-- 5.29.3
+- 6.31.1
 mpfr:
 - '4'
 mpich:
