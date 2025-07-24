@@ -11,9 +11,10 @@ source:
   patches:
     - imp-directories.patch  # [win]
     - imp-abseil-windows.patch  # [win]
+    - imp-npctransport-protobuf-v30.patch
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
