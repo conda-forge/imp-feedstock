@@ -50,6 +50,8 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.12.* *_cpython
+swig_abi:
+- '5'
 target_platform:
 - osx-64
 zip_keys:
