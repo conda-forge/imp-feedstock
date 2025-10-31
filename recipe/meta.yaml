@@ -14,7 +14,7 @@ source:
     - imp-npctransport-protobuf-v30.patch
 
 build:
-  number: 2
+  number: 3
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
@@ -57,7 +57,9 @@ requirements:
     - mpfr
     - mpich  # [not win]
     - msmpi  # [win]
-
+    # We use SWIG classes from the rmf package, so we must ensure we're
+    # using the same version of the SWIG runtime
+    - swig-abi
   run:
     - python
     # RMF does not pin its exports, but we link against the C++ DSO
