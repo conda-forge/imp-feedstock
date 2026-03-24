@@ -31,13 +31,13 @@ libboost_devel:
 libcblas:
 - 3.9.* *netlib
 libopencv:
-- 4.12.0
+- 4.13.0
 libprotobuf:
 - 6.31.1
 llvm_openmp:
 - '19'
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 mpfr:
 - '4'
 mpich:
@@ -53,7 +53,7 @@ python:
 swig_abi:
 - '5'
 target_platform:
-- osx-64
+- osx-arm64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

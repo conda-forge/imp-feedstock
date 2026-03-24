@@ -29,7 +29,7 @@ libboost_devel:
 libcblas:
 - 3.9.* *netlib
 libopencv:
-- 4.12.0
+- 4.13.0
 libprotobuf:
 - 6.31.1
 mpfr:
@@ -43,7 +43,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.13.* *_cp313
 swig_abi:
 - '5'
 target_platform:
