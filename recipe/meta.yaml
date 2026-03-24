@@ -55,7 +55,10 @@ requirements:
     - mpir  # [win]
     - mpfr
     - mpich  # [not win]
-    - msmpi  # [win]
+    # We don't currently support MPI on Windows. This would use the msmpi
+    # package, which needs to be rebuilt with a more modern toolchain:
+    # https://github.com/conda-forge/msmpi-feedstock/pull/21
+
     # We use SWIG classes from the rmf package, so we must ensure we're
     # using the same version of the SWIG runtime
     - swig-abi
