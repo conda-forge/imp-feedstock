@@ -39,6 +39,9 @@ set PERCPPCOMP="-DIMP_PER_CPP_COMPILATION=cgal"
 :: Don't build the scratch or cnmultifit modules
 set DISABLED="scratch:cnmultifit"
 
+:: Modules that use MPI
+set MPIMODS="mpi:nestor:spb"
+
 :: We use the conda boost package, which includes
 :: zlib support, but defining BOOST_ALL_DYN_LINK (below) makes boost try to
 :: link against boost_zlib*.lib, which doesn't exist. Override this by
@@ -60,7 +63,7 @@ if errorlevel 1 exit 1
 
 :: Make sure all modules we asked for were found (this is tested for
 :: in the final package, but quicker to abort here if they're missing)
-python "%RECIPE_DIR%\check_disabled_modules.py" %DISABLED%
+python "%RECIPE_DIR%\check_disabled_modules.py" %DISABLED% %MPIMODS%
 if errorlevel 1 exit 1
 
 :: Often builds fail on Windows on conda-forge's build hosts

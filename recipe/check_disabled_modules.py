@@ -1,3 +1,4 @@
+import itertools
 import sys
 import os
 
@@ -18,7 +19,8 @@ def get_disabled_modules():
                 yield f[4:]
 
 
-expected_disabled = frozenset(sys.argv[1].split(':'))
+expected_disabled = frozenset(
+    itertools.chain.from_iterable(arg.split(':') for arg in sys.argv[1:]))
 
 disabled = frozenset(get_disabled_modules())
 
