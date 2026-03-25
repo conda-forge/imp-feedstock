@@ -13,7 +13,7 @@ source:
     - imp-abseil-windows.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
@@ -55,7 +55,10 @@ requirements:
     - mpir  # [win]
     - mpfr
     - mpich  # [not win]
-    - msmpi  # [win]
+    # We don't currently support MPI on Windows. This would use the msmpi
+    # package, which needs to be rebuilt with a more modern toolchain:
+    # https://github.com/conda-forge/msmpi-feedstock/pull/21
+
     # We use SWIG classes from the rmf package, so we must ensure we're
     # using the same version of the SWIG runtime
     - swig-abi
@@ -65,7 +68,6 @@ requirements:
     - {{ pin_compatible('rmf', max_pin='x.x') }}
     - ihm
     - protobuf
-    - msmpi  # [win]
 
 test:
   # Need Eigen to test IMPConfig.cmake
@@ -82,13 +84,13 @@ test:
     - IMP.bayesianem
     - IMP.sampcon
     - IMP.rmf
-    - IMP.mpi
-    - IMP.spb
+    - IMP.mpi  # [not win]
+    - IMP.spb  # [not win]
     - RMF
   # Command line tools
   commands:
     - foxs --help
-    - spb_test_score --help
+    - spb_test_score --help  # [not win]
     - imp_sampcon --help
     - multifit --help
 
