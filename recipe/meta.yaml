@@ -84,13 +84,13 @@ test:
     - IMP.bayesianem
     - IMP.sampcon
     - IMP.rmf
-    - IMP.mpi
-    - IMP.spb
+    - IMP.mpi  # [not win]
+    - IMP.spb  # [not win]
     - RMF
   # Command line tools
   commands:
     - foxs --help
-    - spb_test_score --help
+    - spb_test_score --help  # [not win]
     - imp_sampcon --help
     - multifit --help
 
