@@ -68,7 +68,6 @@ requirements:
     - {{ pin_compatible('rmf', max_pin='x.x') }}
     - ihm
     - protobuf
-    - msmpi  # [win]
 
 test:
   # Need Eigen to test IMPConfig.cmake
