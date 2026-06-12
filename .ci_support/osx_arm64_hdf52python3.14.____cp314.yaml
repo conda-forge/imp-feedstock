@@ -27,7 +27,7 @@ gsl:
 hdf5:
 - '2'
 libboost_devel:
-- '1.88'
+- '1.90'
 libcblas:
 - 3.9.* *netlib
 libopencv:
