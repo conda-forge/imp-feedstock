@@ -9,3 +9,19 @@ index 2b502773a7..4499222bc8 100644
  libraries="opencv_core:opencv_imgproc:opencv_highgui:opencv_imgcodecs"
  headers="opencv2/core/core.hpp:opencv2/imgproc/imgproc.hpp:opencv2/highgui/highgui.hpp:opencv2/core/version.hpp"
  body="""
+diff --git a/modules/em2d/include/opencv_interface.h b/modules/em2d/include/opencv_interface.h
+index c3d1021bf4..4f7655b64b 100644
+--- a/modules/em2d/include/opencv_interface.h
++++ b/modules/em2d/include/opencv_interface.h
+@@ -15,6 +15,11 @@
+ #include "opencv2/imgproc/imgproc.hpp"
+ #include "opencv2/highgui/highgui.hpp"
+ 
++// OpenCV 5 includes
++#if !defined(CV_VERSION_EPOCH) && CV_VERSION_MAJOR >= 5
++# include <opencv2/geometry/2d.hpp>
++#endif
++
+ #include <iostream>
+ #include <cereal/access.hpp>
+ #include <cereal/cereal.hpp>
