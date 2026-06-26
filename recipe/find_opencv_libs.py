@@ -11,7 +11,7 @@ import shutil
 
 prefix = sys.argv[1]
 wanted_libs = ['opencv_core', 'opencv_imgproc', 'opencv_highgui',
-               'opencv_imgcodecs']
+               'opencv_imgcodecs', 'opencv_geometry']
 
 libdir = os.path.join(prefix, 'Library', 'lib')
 os.chdir(libdir)
